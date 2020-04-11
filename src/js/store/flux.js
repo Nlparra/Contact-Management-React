@@ -38,6 +38,19 @@ const getState = ({ getStore, setStore }) => {
 						})
 						.catch(e => console.error(e));
 				});
+			},
+			editContact(id, name, phone, email, address) {
+				fetch(url + id, {
+					method: "Put",
+					headers: { "Context-type": "application/json" },
+					body: jSON.stringify({
+						full_name: name,
+						phone: phone,
+						email: email,
+						address: address,
+						agenda_slug: "NelsonContact"
+					})
+				});
 			}
 		}
 	};
