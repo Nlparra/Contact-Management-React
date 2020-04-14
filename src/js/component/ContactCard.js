@@ -10,7 +10,7 @@ export const ContactCard = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
-	const { store, action } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	console.log("sttooooreee", store.Contact);
 
 	return (
@@ -57,7 +57,11 @@ export const ContactCard = props => {
 									<i className="fas fa-pencil-alt mr-3" />
 								</button>
 							</Link>
-							<button className="btn" onClick={() => props.onDelete()}>
+							<button
+								className="btn"
+								onClick={() => {
+									actions.deleteContact(e.id);
+								}}>
 								<i className="fas fa-trash-alt" />
 							</button>
 						</li>

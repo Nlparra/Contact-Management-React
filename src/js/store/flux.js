@@ -61,6 +61,21 @@ const getState = ({ getStore, setStore }) => {
 						})
 						.catch(err => console.error(err));
 				});
+			},
+			deleteContact(id) {
+				fetch(url + id, {
+					method: "delete"
+				}).then(() => {
+					fetch(url + "agenda/NelsonContact")
+						.then(res => res.json())
+						.then(results => {
+							console.log("delete", results);
+							setStore({
+								Contact: results
+							});
+						})
+						.catch(e => console.error(e));
+				});
 			}
 		}
 	};
