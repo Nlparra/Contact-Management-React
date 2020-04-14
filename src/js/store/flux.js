@@ -31,7 +31,7 @@ const getState = ({ getStore, setStore }) => {
 					fetch(url + "/agenda/NelsonContact")
 						.then(res => res.json())
 						.then(data => {
-							console.log("Get Contact", data),
+							console.log("Add Contact", data),
 								setStore({
 									Contact: data
 								});
@@ -41,15 +41,25 @@ const getState = ({ getStore, setStore }) => {
 			},
 			editContact(id, name, phone, email, address) {
 				fetch(url + id, {
-					method: "Put",
+					method: "put",
 					headers: { "Context-type": "application/json" },
-					body: jSON.stringify({
+					body: JSON.stringify({
 						full_name: name,
 						phone: phone,
 						email: email,
 						address: address,
 						agenda_slug: "NelsonContact"
 					})
+				}).then(() => {
+					fetch(url + "/agenda/NelsonContact")
+						.then(res => res.json())
+						.then(results => {
+							console.log("edit", results),
+								setStore({
+									Contact: results
+								});
+						})
+						.catch(err => console.error(err));
 				});
 			}
 		}

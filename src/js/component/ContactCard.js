@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
 import { Contacts } from "../views/Contacts";
+import { Link } from "react-router-dom";
 
 export const ContactCard = props => {
 	const [state, setState] = useState({
@@ -51,6 +52,14 @@ export const ContactCard = props => {
 									</div>
 								</div>
 							</div>
+							<Link to={"/edit/" + e.id + "/" + index}>
+								<button className="btn">
+									<i className="fas fa-pencil-alt mr-3" />
+								</button>
+							</Link>
+							<button className="btn" onClick={() => props.onDelete()}>
+								<i className="fas fa-trash-alt" />
+							</button>
 						</li>
 					);
 				})}
@@ -58,26 +67,12 @@ export const ContactCard = props => {
 	);
 };
 
-// <button className="btn">
-//     <i className="fas fa-pencil-alt mr-3" />
-// </button>
-// <button className="btn" onClick={() => props.onDelete()}>
-//     <i className="fas fa-trash-alt" />
-// </button>
-
-/**
- * Define the data-types for
- * your component's properties
- **/
 ContactCard.propTypes = {
+	match: PropTypes.object,
 	history: PropTypes.object,
 	onDelete: PropTypes.func
 };
 
-/**
- * Define the default values for
- * your component's properties
- **/
 ContactCard.defaultProps = {
 	onDelete: null
 };
