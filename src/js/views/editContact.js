@@ -23,7 +23,7 @@ export const editContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Full Name"
-							defaultValue={store.Contact[props.match.params.index].full_name}
+							defaultValue={store.Contact[props.match.params.index].name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</div>
@@ -57,14 +57,16 @@ export const editContact = props => {
 							onChange={e => setAddress(e.target.value)}
 						/>
 					</div>
-					<button
-						type="button"
-						className="btn btn-primary form-control"
-						onClick={() => {
-							actions.editContact(props.match.params.id, name, phone, email, address);
-						}}>
-						save
-					</button>
+					<Link to="/">
+						<button
+							type="button"
+							className="btn btn-primary form-control"
+							onClick={() => {
+								actions.editContact(props.match.params.id, name, phone, email, address);
+							}}>
+							save
+						</button>
+					</Link>
 					<Link className="mt-3 w-100 text-center" to="/">
 						or get back to contacts
 					</Link>

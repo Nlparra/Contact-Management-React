@@ -1,6 +1,6 @@
 import { AddContact } from "../views/AddContact";
 
-const url = "https://assets.breatheco.de/apis/fake/contact/";
+const url = "https://3000-e72c875d-de25-4865-ba8f-27d8d6a62092.ws-us02.gitpod.io/contact";
 
 const getState = ({ getStore, setStore }) => {
 	return {
@@ -9,7 +9,7 @@ const getState = ({ getStore, setStore }) => {
 		},
 		actions: {
 			getContact() {
-				fetch(url + "/agenda/NelsonContact")
+				fetch(url)
 					.then(res => res.json())
 					.then(data => {
 						console.log("Get Contact", data), setStore({ Contact: data });
@@ -21,14 +21,14 @@ const getState = ({ getStore, setStore }) => {
 					method: "Post",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify({
-						full_name: name,
+						name: name,
 						phone: phone,
 						email: email,
-						address: address,
-						agenda_slug: "NelsonContact"
+						address: address
+						// agenda_slug: "NelsonContact"
 					})
 				}).then(() => {
-					fetch(url + "/agenda/NelsonContact")
+					fetch(url)
 						.then(res => res.json())
 						.then(data => {
 							console.log("Add Contact", data),
@@ -44,14 +44,14 @@ const getState = ({ getStore, setStore }) => {
 					method: "Put",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify({
-						full_name: name,
+						name: name,
 						phone: phone,
 						email: email,
-						address: address,
-						agenda_slug: "NelsonContact"
+						address: address
+						// agenda_slug: "NelsonContact"
 					})
 				}).then(() => {
-					fetch(url + "/agenda/NelsonContact")
+					fetch(url)
 						.then(res => res.json())
 						.then(results => {
 							console.log("edit", results),
@@ -66,7 +66,7 @@ const getState = ({ getStore, setStore }) => {
 				fetch(url + id, {
 					method: "delete"
 				}).then(() => {
-					fetch(url + "agenda/NelsonContact")
+					fetch(url)
 						.then(res => res.json())
 						.then(results => {
 							console.log("delete", results);

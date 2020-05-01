@@ -29,7 +29,7 @@ export const ContactCard = props => {
 								</div>
 								<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 									<div className=" float-right">
-										<label className="name lead">{e.full_name}</label>
+										<label className="name lead">{e.name}</label>
 										<br />
 										<i className="fas fa-map-marker-alt text-muted mr-3" />
 										<span className="text-muted">{e.address}</span>
